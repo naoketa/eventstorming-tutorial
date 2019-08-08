@@ -14,10 +14,15 @@ public class CreditCard {
     if(notEnoughMoney(amount)){
       throw new IllegalStateException();
     }
+    this.used = this.used.add(BigDecimal.valueOf(amount));
   }
 
   public void setLimit(BigDecimal limit){
     this.limit = limit;
+  }
+
+  public BigDecimal available(){
+    return limit.subtract(used);
   }
 
   private boolean notEnoughMoney(int amount) {

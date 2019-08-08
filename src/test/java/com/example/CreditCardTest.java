@@ -1,5 +1,6 @@
 package com.example;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.math.BigDecimal;
@@ -19,5 +20,21 @@ public class CreditCardTest {
     creditCard.setLimit(BigDecimal.ONE);
     assertThrows(IllegalStateException.class, () -> creditCard.withdraw(2));
   }
-  
+
+  @Test
+  public void can_withdraw1() {
+    CreditCard creditCard = new CreditCard();
+    creditCard.setLimit(BigDecimal.ONE);
+    creditCard.withdraw(1);
+    assertEquals(0, creditCard.available());
+  }
+
+  @Test
+  public void can_withdraw2() {
+    CreditCard creditCard = new CreditCard();
+    creditCard.setLimit(BigDecimal.TEN);
+    creditCard.withdraw(1);
+    assertEquals(BigDecimal.valueOf(9), creditCard.available());
+  }
+
 }
