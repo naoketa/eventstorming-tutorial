@@ -37,4 +37,11 @@ public class CreditCardTest {
     assertEquals(BigDecimal.valueOf(9), creditCard.available());
   }
 
+  @Test
+  public void cannot_assign_limit_when_it_was_already_assigned() {
+    CreditCard creditCard = new CreditCard();
+    creditCard.setLimit(BigDecimal.TEN);
+    assertThrows(IllegalStateException.class, () -> creditCard.setLimit(BigDecimal.ONE));
+  }
+
 }

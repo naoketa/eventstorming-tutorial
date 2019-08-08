@@ -18,6 +18,9 @@ public class CreditCard {
   }
 
   public void setLimit(BigDecimal limit){
+    if(limitAlreadyAssigned()) {
+      throw new IllegalStateException();
+    }
     this.limit = limit;
   }
 
@@ -32,5 +35,9 @@ public class CreditCard {
 
   private boolean limitNotAssigned(){
     return Objects.isNull(limit);
+  }
+
+  private boolean limitAlreadyAssigned() {
+    return Objects.nonNull(limit);
   }
 }
