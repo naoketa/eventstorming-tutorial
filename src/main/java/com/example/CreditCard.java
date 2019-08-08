@@ -40,4 +40,8 @@ public class CreditCard {
   private boolean limitAlreadyAssigned() {
     return Objects.nonNull(limit);
   }
+
+  public void repay(int amount) {
+    this.used = this.used.subtract(BigDecimal.valueOf(amount));
+  }
 }

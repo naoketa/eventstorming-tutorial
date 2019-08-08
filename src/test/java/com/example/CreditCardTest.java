@@ -48,7 +48,16 @@ public class CreditCardTest {
   public void can_assign_limit() {
     CreditCard creditCard = new CreditCard();
     creditCard.assigmLimit(BigDecimal.TEN);
-    assertEquals(creditCard.available(), BigDecimal.ONE );
+    assertEquals(BigDecimal.TEN, creditCard.available());
+  }
+
+  @Test
+  public void can_repay() {
+    CreditCard creditCard = new CreditCard();
+    creditCard.assigmLimit(BigDecimal.TEN);
+    creditCard.withdraw(5);
+    creditCard.repay(3);
+    assertEquals(BigDecimal.valueOf(8), creditCard.available());
   }
 
 }
