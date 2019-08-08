@@ -17,7 +17,7 @@ public class CreditCard {
     this.used = this.used.add(BigDecimal.valueOf(amount));
   }
 
-  public void setLimit(BigDecimal limit){
+  public void assigmLimit(BigDecimal limit){
     if(limitAlreadyAssigned()) {
       throw new IllegalStateException();
     }
